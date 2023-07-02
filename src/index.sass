@@ -1,4 +1,4 @@
-@import 'reset-css'
+@import 'reset-css'--color-main
 @import 'fonts/stylesheet.css'
 
 :root 
@@ -9,13 +9,12 @@
   --color-secondary: #fff
 
 #root
-  padding: 40px
-  background: #000
+  background: var(--color-main)
   
 body
+  margin: 0
   box-sizing: border-box
   text-transform: uppercase
-body
   *
     box-sizing: border-box
 .wrapper
@@ -23,20 +22,20 @@ body
   grid-template-columns: repeat(8, 1fr)
   align-content: start
   align-items: start
-  max-width: 1800px
-  margin: 0 auto
   gap: 5px
   font-family: var(--font-main)
-  min-height: 100vh
 
-
+.container
+    max-width: 1800px
+    margin: 0 auto
+    padding: 0 15px
 .box
   background-color: #fff
   border-radius: 10px
   padding: 20px 40px
 
 .btn
-  background-color: #000
+  background-color: var(--color-main)
   border-radius: 10px
   padding: 10px 20px
   color: #fff
@@ -47,127 +46,31 @@ body
   text-transform: uppercase
   &:hover
     background: #fff
-    color: #000
+    color: var(--color-main)
     transition: 0.3s
-    border-color: #000
+    border-color: var(--color-main)
 
-.header
-  grid-column: 1/-1
-  display: grid
-  grid-template-columns: repeat(8, 1fr)
-  align-items: center
-  column-gap: 5px
-  font-weight: bold
-  &__about
-    grid-column: 1/4
-    display: flex
-    justify-content: space-between
-  &__menu
-    grid-column: 4/6
-    display: flex
-    justify-content: space-between
-  &__player
-    grid-column: 6/-1
-    display: flex
-    justify-content: space-between
-
+.main
+  grid-column: 1/6
+  border-radius: 10px
 
 .player
   &-scroll
     position: fixed
     left: 0
     right: 0
-    bottom: 10px
+    bottom: 0
     width: 100%
     box-sizing: border-box
     max-width: 1800px
     margin: 0 auto
+    border: 1px solid var(--color-secondary)
+    background: var(--color-main)
+    color: var(--color-secondary)
 
 
-
-.main
-  grid-column: 1/6
-  border-radius: 10px
-
-
-// ================ PROFILE ================ //
-.profile
-  display: flex
-  flex-direction: column
-  gap: 5px
-  &__wrap
-    display: flex
-    flex-direction: column
-    gap: 40px
-    padding: 60px 40px
-  &__title
-    font-size: 100px
-    line-height: 0.8
-    font-family: var(--font-secondary)
-    text-transform: uppercase
-    max-width: 80%
-    font-weight: bold
-  &__dob
-    font-weight: bold
-  &__avatar
-    max-height: 250px
-    object-fit: cover
-    border-radius: 10px
-  &__info
-    &-strong
-        font-weight: bold
-  &__message
-    text-align: right
-    font-size: 46px
-    padding: 20px 40px
-    &::after
-      content: ' >'
-
-// ================ SIDEBAR ================ //
-.sidebar
-  grid-column: 6/-1
-  background-color: #fff
-  border-radius: 10px
-  padding: 20px 40px
-  position: sticky
-  top: 20px
-
-
-// ================ MENU ================ //
-
-.menu
-  &__burger
-    cursor: pointer
 
 // ================ POSTS ================ //
 h2
   font-size: 64px
 
-.posts
-  display: flex
-  flex-direction: column
-  gap: 40px
-  &__inner
-      display: flex
-      flex-direction: column
-      gap: 40px
-  &__textarea
-    border-radius: 10px
-    background: #e2e2e2
-    border: none
-    padding: 20px
-    font-family: var(--font-main)
-    resize: none
-    min-height: 150px
-  &__btn
-    font-size: 34px
-    padding: 20px 40px
-  &__list
-    display: flex
-    flex-direction: column
-    gap: 20px
-  &__item
-    border: 1px solid #000
-    border-radius: 10px
-    padding: 10px 20px
-    line-height: 1.5
