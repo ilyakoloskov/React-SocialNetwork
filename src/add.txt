@@ -1,0 +1,2 @@
+1. create audio spectrum (player)
+2. create sidebar
