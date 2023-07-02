@@ -22,3 +22,12 @@
 .burger
     cursor: pointer
 
+@media screen and (max-width: 768px) 
+  .header
+    &__about,
+    &__menu,
+    &__player
+      grid-column: 1/-1
+    gap: 5px
+    &__player
+      display: none

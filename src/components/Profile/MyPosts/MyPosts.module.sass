@@ -2,6 +2,7 @@
   display: flex
   flex-direction: column
   gap: 40px
+  &__title
   &__inner
       display: flex
       flex-direction: column
@@ -9,13 +10,12 @@
   &__textarea
     border-radius: 10px
     background: #e2e2e2
-    border: none
+    border: 3px solid var(--color-main)
     padding: 20px
     font-family: var(--font-main)
     resize: none
     min-height: 150px
   &__btn
-    font-size: 34px
     padding: 20px 40px
   &__list
     display: flex
