@@ -9,10 +9,10 @@ function Header() {
           <span className="about__employ">frontend-developer</span>
         </div>
       </div>
-      <div className={`${styles.header__menu} box`}>
+      {/* <div className={`${styles.header__menu} box`}>
         <span className="menu__breadcrumb">menu</span>
         <span className={`${styles.header__burger} burger`}>X</span>
-      </div>
+      </div> */}
       <div className={`${styles.header__player} box`}>player</div>
     </header>
   )
