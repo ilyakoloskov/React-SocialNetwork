@@ -8,11 +8,13 @@
 
   --color-main: #000
   --color-secondary: #fff
+  --color-support: #a8a8a8
 
 #root
   background: var(--color-main)
   padding-top: 20px
-
+*
+    box-sizing: border-box
 a
   text-decoration: none
 
@@ -20,8 +22,7 @@ body
   margin: 0
   box-sizing: border-box
   text-transform: uppercase
-  *
-    box-sizing: border-box
+
 .wrapper
   display: grid
   grid-template-columns: repeat(8, 1fr)
@@ -60,6 +61,47 @@ body
   border-radius: 10px
 
 .player
+  &__controls
+      display: flex
+      align-items: center
+      gap: 15px
+  &__cover
+    height: 100%
+    width: 50px
+    height: 50px
+    object-fit: cover
+    border-radius: 5px
+  &__btn
+    background: none
+    border: none
+    cursor: pointer
+    display: flex
+    align-items: center
+    &-icon
+      width: 20px
+  &__currents
+    display: flex
+    flex: 1
+    align-items: center
+    gap: 10px
+  &__duration
+    height: 8px
+    border-radius: 3px
+    width: 100%
+    background: var(--color-support)
+    position: relative
+    cursor: pointer
+    &::before
+      content: ('')
+      position: absolute
+      height: 100%
+      background: var(--color-main)
+      left: 0
+      top: 0
+      right: 0
+      bottom: 0
+      width: 20%
+      z-index: 1
   &-scroll
     position: fixed
     left: 0
@@ -69,9 +111,17 @@ body
     box-sizing: border-box
     max-width: 1800px
     margin: 0 auto
-    border: 1px solid var(--color-secondary)
     background: var(--color-main)
     color: var(--color-secondary)
+    .player__duration
+      &::before
+        content: ('')
+        background: var(--color-secondary)
+    &__wrapper
+        display: flex
+        align-items: center
+        padding: 5px 15px
+        gap: 20px
 
 @media screen and (max-width: 768px)
   .wrapper
@@ -82,3 +132,7 @@ body
 
   .box
     padding: 15px 10px
+
+
+// PLAYER
+
