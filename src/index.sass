@@ -9,14 +9,34 @@
   --color-main: #000
   --color-secondary: #fff
   --color-support: #a8a8a8
+  --color-support-secondary: #dddddd
 
 #root
   background: var(--color-main)
   padding-top: 20px
 *
-    box-sizing: border-box
+  box-sizing: border-box
 a
   text-decoration: none
+  &:hover
+    color: red
+
+.input-text,
+.textarea
+  border-radius: 5px
+  background: #e2e2e2
+  font-family: var(--font-main)
+  resize: none
+  height: 25px
+  width: 100%
+  border: none
+  padding: 10px
+.input-text
+  &:focus
+    border: 1px solid var(--color-main)
+.textarea
+  &:focus
+    border: 3px solid var(--color-main)
 
 body
   margin: 0
@@ -30,15 +50,17 @@ body
   align-items: start
   gap: 5px
   font-family: var(--font-main)
+  min-height: 100vh
 
 .container
-  max-width: 1800px
+  max-width: 1200px
   margin: 0 auto
   padding: 0 15px
+
 .box
   background-color: #fff
   border-radius: 10px
-  padding: 20px 40px
+  padding: 20px
 
 .btn
   background-color: var(--color-main)
@@ -57,14 +79,14 @@ body
     border-color: var(--color-main)
 
 .main
-  grid-column: 1/6
+  grid-column: 1/7
   border-radius: 10px
 
 .player
   &__controls
-      display: flex
-      align-items: center
-      gap: 15px
+    display: flex
+    align-items: center
+    gap: 15px
   &__cover
     height: 100%
     width: 50px
@@ -78,7 +100,7 @@ body
     display: flex
     align-items: center
     &-icon
-      width: 20px
+      width: 16px
   &__currents
     display: flex
     flex: 1
@@ -102,6 +124,7 @@ body
       bottom: 0
       width: 20%
       z-index: 1
+      border-radius: 3px
   &-scroll
     position: fixed
     left: 0
@@ -118,10 +141,10 @@ body
         content: ('')
         background: var(--color-secondary)
     &__wrapper
-        display: flex
-        align-items: center
-        padding: 5px 15px
-        gap: 20px
+      display: flex
+      align-items: center
+      padding: 5px 15px
+      gap: 20px
 
 @media screen and (max-width: 768px)
   .wrapper
@@ -133,6 +156,4 @@ body
   .box
     padding: 15px 10px
 
-
 // PLAYER
-

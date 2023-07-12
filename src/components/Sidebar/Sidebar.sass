@@ -3,7 +3,7 @@
   display: flex
   flex-direction: column
   gap: 5px
-  grid-column: 6/-1
+  grid-column: 7/-1
   border-radius: 10px
   position: sticky
   top: 20px
@@ -18,9 +18,16 @@
   &__list
     display: flex
     flex-direction: column
-    gap: 10px
+    gap: 5px
   &__link
     color: var(--color-main)
+    display: block
+    padding: 5px
+    border-radius: 5px
+    &:hover
+      background: var(--color-support-secondary)
+    &.active
+      background: var(--color-support-secondary)
 
 @media screen and (max-width: 768px)
   .sidebar

@@ -1,0 +1,58 @@
+.dialogs
+    display: grid
+    grid-template-columns: 1fr 2fr
+    gap: 20px
+    &__wrapper
+        display: flex
+        flex-direction: column
+        gap: 10px
+    &__items
+        display: flex
+        flex-direction: column
+        gap: 5
+
+    &__chat
+
+.dialog
+    display: flex
+    align-items: center
+    gap: 10px
+    padding: 10px 5px
+    border-radius: 5px
+    cursor: pointer
+    &:hover
+        background: var(--color-main)
+        .dialog__name
+            color: var(--color-secondary)
+        .dialog__preview
+            color: var(--color-support-secondary)
+    &__avatar
+        max-width: 50px
+        object-fit: cover
+        border-radius: 5px
+    &__name
+        font-weight: bold
+    &__preview
+        // white-space: nowrap
+        color: var(--color-support)
+
+.messages
+    display: flex
+    flex-direction: column
+    justify-content: end
+    gap: 15px
+    &__item
+        display: flex
+        gap: 5px
+        max-width: 350px
+    &__avatar
+        align-self: start
+        width: 30px
+        height: 30px
+        object-fit: cover
+        border-radius: 5px
+    &__message
+        background: var(--color-support-secondary)
+        padding: 10px
+        font-size: 14px
+        border-radius: 5px
