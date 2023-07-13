@@ -5,19 +5,23 @@
     &__wrapper
         display: flex
         flex-direction: column
-        gap: 10px
+        gap: 5px
+        max-height: 75vh
+        overflow-y: scroll
+        padding: 5px 10px 0 2px
     &__items
         display: flex
         flex-direction: column
-        gap: 5
-
-    &__chat
+        gap: 5px
+    &__search
+        position: sticky
+        top: 0
 
 .dialog
     display: flex
     align-items: center
     gap: 10px
-    padding: 10px 5px
+    padding: 5px
     border-radius: 5px
     cursor: pointer
     &:hover
@@ -31,6 +35,7 @@
         object-fit: cover
         border-radius: 5px
     &__name
+        color: var(--color-main)
         font-weight: bold
     &__preview
         // white-space: nowrap
@@ -41,6 +46,15 @@
     flex-direction: column
     justify-content: end
     gap: 15px
+    max-height: 80vh
+    &__wrapper
+        display: flex
+        flex-direction: column
+        justify-content: end
+        gap: 15px
+        max-height: 70vh
+        min-height: 70vh
+        overflow-y: scroll
     &__item
         display: flex
         gap: 5px
@@ -51,8 +65,22 @@
         height: 30px
         object-fit: cover
         border-radius: 5px
+        position: sticky
+        top: 0
     &__message
         background: var(--color-support-secondary)
         padding: 10px
         font-size: 14px
         border-radius: 5px
+    &_my
+        justify-self: end
+    &__controls
+        display: flex
+        gap: 10px
+    &__btn
+        cursor: pointer
+    &__btn-icon
+        width: 25px
+    &__textarea
+        height: auto
+        min-height: 30px

@@ -13,8 +13,8 @@ function Post(props) {
         <div className={styles.post__date}>19 / 04 / 2023</div>
 
         <div className={styles.post__reaction}>
-          <div className="post__like">Like {props.likesCount}</div>
-          <div className="post__dislike">dislike</div>
+          <div className="post__like">Like: {props.likesCount} |</div> 
+          <div className="post__dislike">Dislike: {props.disLikesCount}</div>
         </div>
       </div>
     </article>

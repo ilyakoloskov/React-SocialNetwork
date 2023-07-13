@@ -9,14 +9,14 @@ import Sidebar from './components/Sidebar/Sidebar'
 import Player from './components/Player/Player'
 
 
-function App() {
+function App() {  
   return (
     <BrowserRouter>
       <div className="wrapper container">
         <Header />
         <main className="main">
           <Routes>
-            <Route path="/dialogs" element={<Dialogs/>} />
+            <Route path="/dialogs/*" element={<Dialogs />} />
             <Route path="/profile" element={<Profile/>}/>
           </Routes>
         </main>
