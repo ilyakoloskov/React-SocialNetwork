@@ -2,13 +2,14 @@ import ProfileInfo from './ProfileInfo/ProfileInfo'
 import MyPosts from './MyPosts/MyPosts'
 import styles from './Profile.module.sass'
 
-function Profile() {
+function Profile(props) {
+  debugger
   return (
     <section className={styles.profile}>
       <div className={`${styles.profile__wrapper} box`}>
         <ProfileInfo />
       </div>
-      <MyPosts />
+      <MyPosts postsData={props.state.postsData}/>
     </section>
   )
 }

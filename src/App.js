@@ -1,6 +1,6 @@
 import 'reset-css'
 import './App.sass'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header/Header'
 import Profile from './components/Profile/Profile'
@@ -8,22 +8,23 @@ import Dialogs from './components/Dialogs/Dialogs'
 import Sidebar from './components/Sidebar/Sidebar'
 import Player from './components/Player/Player'
 
-
-function App() {  
+function App(props) {  
   return (
-    <BrowserRouter>
+
       <div className="wrapper container">
         <Header />
         <main className="main">
           <Routes>
-            <Route path="/dialogs/*" element={<Dialogs />} />
-            <Route path="/profile" element={<Profile/>}/>
+            <Route path="/dialogs/*" element={<Dialogs 
+                                                state={props.state.dialogsPage} />} />
+
+            <Route path="/profile" element={<Profile
+                                                state={props.state.profilePage} />} />
           </Routes>
         </main>
         <Sidebar />
         <Player />
       </div>
-    </BrowserRouter>
   )
 }
 
