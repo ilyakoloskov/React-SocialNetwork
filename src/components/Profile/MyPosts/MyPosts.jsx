@@ -16,13 +16,15 @@ function MyPosts(props) {
   let newPostElement = React.createRef()
 
   let onAddPost = function () {
-    let postTextArea = newPostElement.current.value
-    props.addPost(postTextArea)
+    // let postTextArea = newPostElement.current.value
+    // props.addPost()
+    props.dispatch({ type: 'ADD-POST' })
   }
 
   let onPostChange = () => {
     let postTextArea = newPostElement.current.value
-    props.updateNewPostText(postTextArea)
+    props.dispatch({ type: '', postText: postTextArea })
+    // props.dispatch(postTextArea)
   }
 
   return (

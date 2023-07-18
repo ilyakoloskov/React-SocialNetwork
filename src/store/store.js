@@ -102,6 +102,10 @@ let store = {
     return this._state
   },
 
+  subscribe(observer) {
+    this._callSubscriber = observer
+  },
+
   addPost() {
     let newPost = {
       id: 5,
@@ -118,8 +122,22 @@ let store = {
     this._callSubscriber(this.getState())
   },
 
-  subscribe(observer) {
-    this._callSubscriber = observer
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      let newPost = {
+        id: 5,
+        postText: this._state.profilePage.newPostText,
+        likesCount: 0,
+      }
+      this._state.profilePage.postsData.push(newPost)
+      this._state.profilePage.newPostText = ''
+      // this._callSubscriber(this.getState())
+      alert('Dispatch')
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.profilePage.newPostText = action.newText
+      // this._callSubscriber(this.getState())
+    }
+    this._callSubscriber(this.getState())
   },
 }
 
