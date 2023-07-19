@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+
 let store = {
   _state: {
     profilePage: {
@@ -89,6 +94,7 @@ let store = {
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quod. Sequi nesciunt accusamus alias accusantium ullam.',
         },
       ],
+      newMessageText: 'weeqwwqwqewqewqeweqweq',
     },
   },
 
@@ -105,7 +111,7 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === 'ADD-POST') {
+    if (action.type === ADD_POST) {
       let newPost = {
         id: 5,
         postText: this._state.profilePage.newPostText,
@@ -113,11 +119,25 @@ let store = {
       }
       this._state.profilePage.postsData.push(newPost)
       this._state.profilePage.newPostText = ''
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.postText
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+      this._state.dialogsPage.newMessageText = action.message
     }
     this._callSubscriber(this.getState())
   },
+}
+
+export const onAddPostActionCreator = () => {
+  return { type: ADD_POST }
+}
+
+export const updateNewPostTextActionCreator = (postTextArea) => {
+  return { type: UPDATE_NEW_POST_TEXT, postText: postTextArea }
+}
+
+export const updateNewMessageTextActionCreator = (messageTextArea) => {
+  return { type: UPDATE_NEW_MESSAGE_TEXT, message: messageTextArea }
 }
 
 window.store = store

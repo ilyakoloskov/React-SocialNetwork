@@ -14,7 +14,10 @@ function App(props) {
       <Header />
       <main className="main">
         <Routes>
-          <Route path="/dialogs/*" element={<Dialogs state={props.state.dialogsPage} />} />
+          <Route
+            path="/dialogs/*"
+            element={<Dialogs state={props.state.dialogsPage} dispatch={props.dispatch} />}
+          />
 
           <Route
             path="/profile"

@@ -1,6 +1,7 @@
 import Post from './Post/Post'
 import styles from './MyPosts.module.sass'
 import React from 'react'
+import { onAddPostActionCreator, updateNewPostTextActionCreator } from '../../../store/store'
 
 function MyPosts(props) {
   let postsElements = props.postsData.map((post) => {
@@ -16,16 +17,12 @@ function MyPosts(props) {
   let newPostElement = React.createRef()
 
   let onAddPost = function () {
-    let action = { type: 'ADD-POST' }
-
-    props.dispatch(action)
+    props.dispatch(onAddPostActionCreator())
   }
 
   let onPostChange = () => {
-    let postTextArea = newPostElement.current.value
-    let action = { type: 'UPDATE-NEW-POST-TEXT', postText: postTextArea }
-
-    props.dispatch(action)
+    let action = newPostElement.current.value
+    props.dispatch(updateNewPostTextActionCreator(action))
   }
 
   return (

@@ -2,6 +2,7 @@ import './Dialogs.sass'
 import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
 import React from 'react'
+import { updateNewMessageTextActionCreator } from '../../store/store'
 
 function Dialogs(props) {
   let dialogsElement = props.state.dialogsData.map((dialog) => (
@@ -13,8 +14,10 @@ function Dialogs(props) {
   ))
 
   let newMessageElement = React.createRef()
-  let addPost = function () {
-    console.log('add post')
+
+  let onMessageChange = () => {
+    let action = newMessageElement.current.value
+    props.dispatch(updateNewMessageTextActionCreator(action))
   }
 
   return (
@@ -41,13 +44,15 @@ function Dialogs(props) {
         </div>
         <div className="messages__controls">
           <textarea
+            onChange={onMessageChange}
             ref={newMessageElement}
             className="messages__textarea input-text"
             type="text"
             placeholder="Write a message..."
+            value={props.state.newMessageText}
             contenteditable
           />
-          <div className="messages__btn" onClick={addPost}>
+          <div className="messages__btn">
             <img className="messages__btn-icon icon" src="/icons/send-mess.svg" alt="" />
           </div>
         </div>
