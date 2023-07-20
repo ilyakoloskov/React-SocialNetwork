@@ -2,7 +2,7 @@ import './Dialogs.sass'
 import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
 import React from 'react'
-import { updateNewMessageTextActionCreator } from '../../store/store'
+import { updateNewMessageTextActionCreator, onSendMessageActionCreator } from '../../store/store'
 
 function Dialogs(props) {
   let dialogsElement = props.state.dialogsData.map((dialog) => (
@@ -18,6 +18,10 @@ function Dialogs(props) {
   let onMessageChange = () => {
     let action = newMessageElement.current.value
     props.dispatch(updateNewMessageTextActionCreator(action))
+  }
+
+  let onAddMessage = () => {
+    props.dispatch(onSendMessageActionCreator())
   }
 
   return (
@@ -52,7 +56,7 @@ function Dialogs(props) {
             value={props.state.newMessageText}
             contenteditable
           />
-          <div className="messages__btn">
+          <div className="messages__btn" onClick={onAddMessage}>
             <img className="messages__btn-icon icon" src="/icons/send-mess.svg" alt="" />
           </div>
         </div>
