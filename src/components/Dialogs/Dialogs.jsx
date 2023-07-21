@@ -2,26 +2,24 @@ import './Dialogs.sass'
 import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
 import React from 'react'
-import { updateNewMessageTextActionCreator, onSendMessageActionCreator } from '../../store/store'
+import { updateNewMessageBodyCreator, onSendMessageActionCreator } from '../../store/store'
 
 function Dialogs(props) {
-  let dialogsElement = props.state.dialogsData.map((dialog) => (
+  let state = props.store.getState().dialogsPage
+
+  let dialogsElement = state.dialogsData.map((dialog) => (
     <DialogItem id={dialog.id} name={dialog.name} />
   ))
 
-  let messagesElement = props.state.messagesData.map((message) => (
-    <Message message={message.message} />
-  ))
+  let messagesElement = state.messagesData.map((message) => <Message message={message.message} />)
 
-  let newMessageElement = React.createRef()
-
-  let onMessageChange = () => {
-    let action = newMessageElement.current.value
-    props.dispatch(updateNewMessageTextActionCreator(action))
+  let onMessageChange = (e) => {
+    let action = e.target.value
+    props.store.dispatch(updateNewMessageBodyCreator(action))
   }
 
-  let onAddMessage = () => {
-    props.dispatch(onSendMessageActionCreator())
+  let onSendMessageClick = () => {
+    props.store.dispatch(onSendMessageActionCreator())
   }
 
   return (
@@ -49,14 +47,14 @@ function Dialogs(props) {
         <div className="messages__controls">
           <textarea
             onChange={onMessageChange}
-            ref={newMessageElement}
+            // ref={newMessageElement}
             className="messages__textarea input-text"
             type="text"
             placeholder="Write a message..."
-            value={props.state.newMessageText}
+            value={state.newMessageBody}
             contenteditable
           />
-          <div className="messages__btn" onClick={onAddMessage}>
+          <div className="messages__btn" onClick={onSendMessageClick}>
             <img className="messages__btn-icon icon" src="/icons/send-mess.svg" alt="" />
           </div>
         </div>
