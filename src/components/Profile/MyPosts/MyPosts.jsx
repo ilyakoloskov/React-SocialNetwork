@@ -1,9 +1,13 @@
 import Post from './Post/Post'
 import styles from './MyPosts.module.sass'
 import React from 'react'
-import { onAddPostActionCreator, updateNewPostTextActionCreator } from '../../../store/store'
+import {
+  onAddPostActionCreator,
+  updateNewPostTextActionCreator,
+} from '../../../store/profileReducer'
 
 function MyPosts(props) {
+  debugger
   let postsElements = props.postsData.map((post) => {
     return (
       <Post

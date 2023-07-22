@@ -1,8 +1,7 @@
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
-const SEND_MESSAGE = 'SEND_MESSAGE'
+import profileReducer from './profileReducer'
+import playerReducer from './playerReducer'
+import dialogsReducer from './dialogsReducer'
+import sidebarReducer from './sidebarReducer'
 
 let store = {
   _state: {
@@ -13,34 +12,6 @@ let store = {
           postText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, placeat.',
           likesCount: 4,
           disLikesCount: 0,
-        },
-        {
-          id: 1,
-          postText:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. A, placeat.',
-          likesCount: 10,
-          disLikesCount: 1,
-        },
-        {
-          id: 1,
-          postText:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. A, placeat.',
-          likesCount: 10,
-          disLikesCount: 1,
-        },
-        {
-          id: 1,
-          postText:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. A, placeat.',
-          likesCount: 10,
-          disLikesCount: 1,
-        },
-        {
-          id: 1,
-          postText:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. A, placeat.',
-          likesCount: 10,
-          disLikesCount: 1,
         },
         {
           id: 1,
@@ -97,6 +68,8 @@ let store = {
       ],
       newMessageBody: String,
     },
+    sidebar: {},
+    player: {},
   },
 
   _callSubscriber() {
@@ -112,44 +85,13 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      let newPost = {
-        id: 5,
-        postText: this._state.profilePage.newPostText,
-        likesCount: 0,
-      }
-      this._state.profilePage.postsData.push(newPost)
-      this._state.profilePage.newPostText = ''
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profilePage.newPostText = action.postText
-    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-      this._state.dialogsPage.newMessageBody = action.message
-    } else if (action.type === SEND_MESSAGE) {
-      let newMessage = {
-        id: 0,
-        message: this._state.dialogsPage.newMessageBody,
-      }
-      this._state.dialogsPage.messagesData.push(newMessage)
-      this._state.dialogsPage.newMessageBody = ''
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+    this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+    this._state.player = playerReducer(this._state.player, action)
+
     this._callSubscriber(this.getState())
   },
-}
-
-export const onAddPostActionCreator = () => {
-  return { type: ADD_POST }
-}
-
-export const updateNewPostTextActionCreator = (postTextArea) => {
-  return { type: UPDATE_NEW_POST_TEXT, postText: postTextArea }
-}
-
-export const updateNewMessageBodyCreator = (body) => {
-  return { type: UPDATE_NEW_MESSAGE_BODY, message: body }
-}
-
-export const onSendMessageActionCreator = () => {
-  return { type: SEND_MESSAGE }
 }
 
 window.store = store

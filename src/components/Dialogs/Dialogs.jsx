@@ -2,7 +2,7 @@ import './Dialogs.sass'
 import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
 import React from 'react'
-import { updateNewMessageBodyCreator, onSendMessageActionCreator } from '../../store/store'
+import { updateNewMessageBodyCreator, onSendMessageActionCreator } from '../../store/dialogsReducer'
 
 function Dialogs(props) {
   let state = props.store.getState().dialogsPage
