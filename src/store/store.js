@@ -69,7 +69,6 @@ let store = {
       newMessageBody: String,
     },
     sidebar: {},
-    player: {},
   },
 
   _callSubscriber() {

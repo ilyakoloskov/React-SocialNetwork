@@ -14,7 +14,7 @@ function Dialogs(props) {
 
   let onMessageChange = (e) => {
     let value = e.target.value
-    props.messageChange(value)
+    props.updateNewMessageBody(value)
   }
 
   let onSendMessageClick = () => {
