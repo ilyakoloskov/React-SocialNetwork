@@ -1,4 +1,6 @@
-const playerReducer = (state, action) => {
+let initialState = {}
+
+const playerReducer = (state = initialState, action) => {
   return state
 }
 

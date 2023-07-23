@@ -1,6 +1,6 @@
 import ProfileInfo from './ProfileInfo/ProfileInfo'
-import MyPosts from './MyPosts/MyPosts'
 import styles from './Profile.module.sass'
+import MyPostsContainer from './MyPosts/MyPostsContainer'
 
 function Profile(props) {
   return (
@@ -8,11 +8,7 @@ function Profile(props) {
       <div className={`${styles.profile__wrapper} box`}>
         <ProfileInfo />
       </div>
-      <MyPosts
-        postsData={props.profilePage.postsData}
-        dispatch={props.dispatch}
-        newPostText={props.profilePage.newPostText}
-      />
+      <MyPostsContainer store={props.store} />
     </section>
   )
 }

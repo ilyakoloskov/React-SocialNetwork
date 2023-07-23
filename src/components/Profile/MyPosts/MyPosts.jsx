@@ -1,10 +1,6 @@
 import Post from './Post/Post'
 import styles from './MyPosts.module.sass'
 import React from 'react'
-import {
-  onAddPostActionCreator,
-  updateNewPostTextActionCreator,
-} from '../../../store/profileReducer'
 
 function MyPosts(props) {
   debugger
@@ -18,15 +14,13 @@ function MyPosts(props) {
     )
   })
 
-  let newPostElement = React.createRef()
-
   let onAddPost = function () {
-    props.dispatch(onAddPostActionCreator())
+    props.onAddPost()
   }
 
-  let onPostChange = () => {
-    let action = newPostElement.current.value
-    props.dispatch(updateNewPostTextActionCreator(action))
+  let onPostChange = (e) => {
+    let text = e.target.value
+    props.onPostChange(text)
   }
 
   return (
@@ -36,7 +30,6 @@ function MyPosts(props) {
         <textarea
           onChange={onPostChange}
           value={props.newPostText}
-          ref={newPostElement}
           className={`${styles.posts__textarea} textarea`}
           placeholder="Add posts:"
         ></textarea>

@@ -4,9 +4,9 @@ import { Routes, Route } from 'react-router-dom'
 
 import Header from './components/Header/Header'
 import Profile from './components/Profile/Profile'
-import Dialogs from './components/Dialogs/Dialogs'
 import Sidebar from './components/Sidebar/Sidebar'
 import Player from './components/Player/Player'
+import DialogsContainer from './components/Dialogs/DialogsContainer'
 
 function App(props) {
   return (
@@ -14,11 +14,8 @@ function App(props) {
       <Header />
       <main className="main">
         <Routes>
-          <Route
-            path="/profile/*"
-            element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />}
-          />
-          <Route path="/dialogs/*" element={<Dialogs store={props.store} />} />
+          <Route path="/profile/*" element={<Profile />} />
+          <Route path="/dialogs/*" element={<DialogsContainer />} />
         </Routes>
       </main>
       <Sidebar />
