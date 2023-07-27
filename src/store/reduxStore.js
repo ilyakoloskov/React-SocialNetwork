@@ -4,6 +4,7 @@ import playerReducer from './playerReducer'
 import dialogsReducer from './dialogsReducer'
 import sidebarReducer from './sidebarReducer'
 
+// За каждую ветку объекта, отвечает свой reducer
 let reducers = combineReducers({
   profilePage: profileReducer,
   dialogsPage: dialogsReducer,

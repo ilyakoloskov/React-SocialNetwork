@@ -14,34 +14,19 @@ let initialState = {
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quod. Sequi nesciunt accusamus alias accusantium ullam. Porro aut molestias repellendus! Nemo praesentium sit aliquid aliquam, soluta cum voluptas enim minus?',
     },
     {
-      id: 0,
-      message:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quod. Sequi nesciunt accusamus alias accusantium ullam. Porro aut molestias repellendus! Nemo praesentium sit aliquid aliquam, soluta cum voluptas enim minus?',
-    },
-    {
-      id: 0,
-      message:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quod. Sequi nesciunt accusamus alias accusantium ullam. Porro aut molestias repellendus! Nemo praesentium sit aliquid aliquam, soluta cum voluptas enim minus?',
-    },
-    {
-      id: 0,
-      message:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quod. Sequi nesciunt accusamus alias accusantium ullam. Porro aut molestias repellendus! Nemo praesentium sit aliquid aliquam, soluta cum voluptas enim minus?',
-    },
-    {
-      id: 0,
-      message:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quod. Sequi nesciunt accusamus alias accusantium ullam. Porro aut molestias repellendus! Nemo praesentium sit aliquid aliquam, soluta cum voluptas enim minus?',
-    },
-    {
-      id: 0,
-      message:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quod. Sequi nesciunt accusamus alias accusantium ullam. Porro aut molestias repellendus! Nemo praesentium sit aliquid aliquam, soluta cum voluptas enim minus?',
-    },
-    {
       id: 1,
       message:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quod. Sequi nesciunt accusamus alias accusantium ullam.',
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quod. Sequi nesciunt accusamus alias accusantium ullam. Porro aut molestias repellendus! Nemo praesentium sit aliquid aliquam, soluta cum voluptas enim minus?',
+    },
+    {
+      id: 2,
+      message:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quod. Sequi nesciunt accusamus alias accusantium ullam. Porro aut molestias repellendus! Nemo praesentium sit aliquid aliquam, soluta cum voluptas enim minus?',
+    },
+    {
+      id: 3,
+      message:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quod. Sequi nesciunt accusamus alias accusantium ullam. Porro aut molestias repellendus! Nemo praesentium sit aliquid aliquam, soluta cum voluptas enim minus?',
     },
   ],
   newMessageBody: String,
@@ -50,21 +35,23 @@ let initialState = {
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEND_MESSAGE: {
-      let newMessage = {
-        id: 0,
-        message: state.newMessageBody,
+      return {
+        ...state,
+        newMessageBody: '',
+        messagesData: [
+          ...state.messagesData,
+          {
+            id: 0,
+            message: state.newMessageBody,
+          },
+        ],
       }
-      let stateCopy = { ...state }
-      stateCopy.messagesData = [...state.messagesData]
-      // console.log(stateCopy)
-      stateCopy.messagesData.push(newMessage)
-      stateCopy.newMessageBody = ''
-      return stateCopy
     }
     case UPDATE_NEW_MESSAGE_BODY: {
-      let stateCopy = { ...state }
-      stateCopy.newMessageBody = action.message
-      return stateCopy
+      return {
+        ...state,
+        newMessageBody: action.message,
+      }
     }
     default:
       return state

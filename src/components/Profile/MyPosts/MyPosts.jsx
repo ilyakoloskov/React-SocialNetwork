@@ -3,13 +3,13 @@ import styles from './MyPosts.module.sass'
 import React from 'react'
 
 function MyPosts(props) {
-  debugger
   let postsElements = props.postsData.map((post) => {
     return (
       <Post
         messages={post.postText}
         likesCount={post.likesCount}
         disLikesCount={post.disLikesCount}
+        key={post.id}
       />
     )
   })

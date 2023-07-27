@@ -5,11 +5,11 @@ import React from 'react'
 
 function Dialogs(props) {
   let dialogsElement = props.dialogsPage.dialogsData.map((dialog) => (
-    <DialogItem id={dialog.id} name={dialog.name} />
+    <DialogItem id={dialog.id} name={dialog.name} key={dialog.id} />
   ))
 
   let messagesElement = props.dialogsPage.messagesData.map((message) => (
-    <Message message={message.message} />
+    <Message message={message.message} key={message.id} />
   ))
 
   let onMessageChange = (e) => {
