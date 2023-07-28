@@ -18,6 +18,11 @@ function Sidebar() {
                 My dialogs
               </NavLink>
             </li>
+            <li className="nav__item">
+              <NavLink className="nav__link" to="/users">
+                Users
+              </NavLink>
+            </li>
             {/* <li className='nav__item'>
             <a className='nav__link' href="">My friend</a>
           </li>

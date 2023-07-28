@@ -7,8 +7,9 @@ import Profile from './components/Profile/Profile'
 import Sidebar from './components/Sidebar/Sidebar'
 import Player from './components/Player/Player'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
+import Users from './components/Users/Users'
 
-function App(props) {
+function App() {
   return (
     <div className="wrapper container">
       <Header />
@@ -16,6 +17,8 @@ function App(props) {
         <Routes>
           <Route path="/profile/*" element={<Profile />} />
           <Route path="/dialogs/*" element={<DialogsContainer />} />
+          <Route path="/users/*" element={ <Users />} />
+
         </Routes>
       </main>
       <Sidebar />

@@ -19,7 +19,3 @@ root.render(
   </Provider>
 )
 
-// store.subscribe(() => {
-//   // let state = store.getState()
-//   rerenderEntireTree()
-// })
