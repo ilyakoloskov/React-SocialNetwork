@@ -3,11 +3,13 @@ import profileReducer from './profileReducer'
 import playerReducer from './playerReducer'
 import dialogsReducer from './dialogsReducer'
 import sidebarReducer from './sidebarReducer'
+import usersReducer from './usersReducer'
 
 // За каждую ветку объекта, отвечает свой reducer
 let reducers = combineReducers({
   profilePage: profileReducer,
   dialogsPage: dialogsReducer,
+  usersPage: usersReducer,
   sidebar: sidebarReducer,
   playerBar: playerReducer,
 })

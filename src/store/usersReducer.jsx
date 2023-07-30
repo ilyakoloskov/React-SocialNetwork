@@ -1,10 +1,13 @@
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const FOLLOW = 'FOLLOW'
+const UNFOLLOW = 'UNFOLLOW'
+const SET_USERS = 'SET_USERS'
 
 let initialState = {
   usersData: [
     {
       id: 0,
+      avatarUrl:
+        'https://i2-prod.irishmirror.ie/incoming/article30555281.ece/ALTERNATES/n615/1_2023-Sports-Illustrated-Swimsuit-Issue-Launch.jpg',
       isFollowed: true,
       firstName: 'Ilya',
       lastName: 'Koloskov',
@@ -12,63 +15,97 @@ let initialState = {
       location: {
         country: 'Russia',
         city: 'Penza',
-    }
+      },
     },
     {
-        id: 1,
-        isFollowed: true,
-        firstName: 'Anton',
-        lastName: 'Belousov',
-        status: 'Ololoololo',
-        location: {
-            country: 'Russia',
-            city: 'Penza',
-        }
+      id: 1,
+      avatarUrl:
+        'https://i2-prod.irishmirror.ie/incoming/article30555281.ece/ALTERNATES/n615/1_2023-Sports-Illustrated-Swimsuit-Issue-Launch.jpg',
+      isFollowed: true,
+      firstName: 'Anton',
+      lastName: 'Belousov',
+      status: 'Ololoololo',
+      location: {
+        country: 'Russia',
+        city: 'Penza',
+      },
     },
     {
-        id: 2,
-        isFollowed: false,
-        firstName: 'German',
-        lastName: 'Fedotov',
-        status: '',
-        location: {
-            country: 'Russia',
-            city: 'Moscow',
-        }
+      id: 2,
+      avatarUrl:
+        'https://i2-prod.irishmirror.ie/incoming/article30555281.ece/ALTERNATES/n615/1_2023-Sports-Illustrated-Swimsuit-Issue-Launch.jpg',
+      isFollowed: false,
+      firstName: 'German',
+      lastName: 'Fedotov',
+      status: '',
+      location: {
+        country: 'Russia',
+        city: 'Moscow',
+      },
     },
     {
-        id: 3,
-        isFollowed: true,
-        firstName: 'Dmitriy',
-        lastName: 'Alegin',
-        status: 'XD',
-        location: {
-            country: 'Russia',
-            city: 'Novgorod',
-        }
+      id: 3,
+      avatarUrl:
+        'https://i2-prod.irishmirror.ie/incoming/article30555281.ece/ALTERNATES/n615/1_2023-Sports-Illustrated-Swimsuit-Issue-Launch.jpg',
+      isFollowed: true,
+      firstName: 'Dmitriy',
+      lastName: 'Alegin',
+      status: 'XD',
+      location: {
+        country: 'Russia',
+        city: 'Novgorod',
+      },
     },
   ],
-  newPostText: String,
 }
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FOLLOW: 
-        return
-    case UNFOLLOW: 
-        return
+    case FOLLOW:
+      return {
+        ...state,
+        usersData: state.usersData.map((user) => {
+          if (user.id === action.userId) {
+            return { ...user, isFollowed: true }
+          }
+          return user
+        }),
+      }
+    case UNFOLLOW:
+      return {
+        ...state,
+        usersData: state.usersData.map((user) => {
+          if (user.id === action.userId) {
+            return { ...user, isFollowed: false }
+          }
+          return user
+        }),
+      }
+    case SET_USERS: {
+      return {
+        ...state,
+        usersData: [...state.usersData, ...action.usersData],
+      }
+    }
     default: {
       return state
     }
   }
 }
 
-export const addPostActionCreator = () => {
-  return { type: ADD_POST }
+export const followActionCreator = (userId) => {
+  return { type: FOLLOW, userId }
 }
 
-export const updateNewPostTextActionCreator = (postTextArea) => {
-  return { type: UPDATE_NEW_POST_TEXT, postText: postTextArea }
+export const unFollowActionCreator = (userId) => {
+  return { type: UNFOLLOW, userId }
+}
+
+export const setUsers = (usersData) => {
+  return {
+    type: SET_USERS,
+    usersData,
+  }
 }
 
 export default usersReducer
