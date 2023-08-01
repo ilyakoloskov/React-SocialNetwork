@@ -82,6 +82,7 @@ const usersReducer = (state = initialState, action) => {
         }),
       }
     case SET_USERS: {
+      console.log('SET_USERS IN REDUCER', action.usersData)
       return {
         ...state,
         usersData: [...state.usersData, ...action.usersData],
@@ -101,7 +102,7 @@ export const unFollowActionCreator = (userId) => {
   return { type: UNFOLLOW, userId }
 }
 
-export const setUsers = (usersData) => {
+export const setUsersActionCreator = (usersData) => {
   return {
     type: SET_USERS,
     usersData,

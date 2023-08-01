@@ -9,7 +9,7 @@ function User(props) {
   }
   return (
     <div className="user">
-      <div className="user__firstName">{props.firstName}</div>
+      <div className="user__firstName">{props.name}</div>
       <div className="user__lastName">{props.lastName}</div>
       <div className="user__status">{props.status}</div>
       <img className="user__avatar" src={props.avatarUrl} alt="" />
