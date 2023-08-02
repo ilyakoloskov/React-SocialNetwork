@@ -1,62 +1,14 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_USERS_TOTAL_COUNT = 'SET_USERS_TOTAL_COUNT'
 
 let initialState = {
-  usersData: [
-    // {
-    //   id: 0,
-    //   avatarUrl:
-    //     'https://i2-prod.irishmirror.ie/incoming/article30555281.ece/ALTERNATES/n615/1_2023-Sports-Illustrated-Swimsuit-Issue-Launch.jpg',
-    //   isFollowed: true,
-    //   firstName: 'Ilya',
-    //   lastName: 'Koloskov',
-    //   status: 'My status :)',
-    //   location: {
-    //     country: 'Russia',
-    //     city: 'Penza',
-    //   },
-    // },
-    // {
-    //   id: 1,
-    //   avatarUrl:
-    //     'https://i2-prod.irishmirror.ie/incoming/article30555281.ece/ALTERNATES/n615/1_2023-Sports-Illustrated-Swimsuit-Issue-Launch.jpg',
-    //   isFollowed: true,
-    //   firstName: 'Anton',
-    //   lastName: 'Belousov',
-    //   status: 'Ololoololo',
-    //   location: {
-    //     country: 'Russia',
-    //     city: 'Penza',
-    //   },
-    // },
-    // {
-    //   id: 2,
-    //   avatarUrl:
-    //     'https://i2-prod.irishmirror.ie/incoming/article30555281.ece/ALTERNATES/n615/1_2023-Sports-Illustrated-Swimsuit-Issue-Launch.jpg',
-    //   isFollowed: false,
-    //   firstName: 'German',
-    //   lastName: 'Fedotov',
-    //   status: '',
-    //   location: {
-    //     country: 'Russia',
-    //     city: 'Moscow',
-    //   },
-    // },
-    // {
-    //   id: 3,
-    //   avatarUrl:
-    //     'https://i2-prod.irishmirror.ie/incoming/article30555281.ece/ALTERNATES/n615/1_2023-Sports-Illustrated-Swimsuit-Issue-Launch.jpg',
-    //   isFollowed: true,
-    //   firstName: 'Dmitriy',
-    //   lastName: 'Alegin',
-    //   status: 'XD',
-    //   location: {
-    //     country: 'Russia',
-    //     city: 'Novgorod',
-    //   },
-    // },
-  ],
+  usersData: [],
+  pageSize: 5 ,
+  totalUsersCount: 0,
+  currentPage: 1
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -85,7 +37,17 @@ const usersReducer = (state = initialState, action) => {
       console.log('SET_USERS IN REDUCER', action.usersData)
       return {
         ...state,
-        usersData: [...state.usersData, ...action.usersData],
+         usersData: action.usersData,
+      }
+    }
+    case SET_CURRENT_PAGE: {
+      return {
+        ...state, currentPage: action.currentPage
+      }
+    }
+    case SET_USERS_TOTAL_COUNT: {
+      return {
+        ...state, totalUsersCount: action.totalUsersCount
       }
     }
     default: {
@@ -102,10 +64,21 @@ export const unFollowActionCreator = (userId) => {
   return { type: UNFOLLOW, userId }
 }
 
+export const setCurrentPageActionCreator = (currentPage)=> {
+  return {type: SET_CURRENT_PAGE, currentPage}
+}
+
 export const setUsersActionCreator = (usersData) => {
   return {
     type: SET_USERS,
     usersData,
+  }
+}
+
+export const setUsersTotalCountActionCreator = (totalUsersCount) => {
+  return {
+    type: SET_USERS_TOTAL_COUNT,
+    totalUsersCount,
   }
 }
 
