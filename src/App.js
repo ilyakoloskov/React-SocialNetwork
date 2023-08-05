@@ -2,7 +2,9 @@ import 'reset-css'
 import { Routes, Route } from 'react-router-dom'
 
 import Header from './components/Header/Header'
-import Profile from './components/Profile/Profile'
+// import Profile from './components/Profile/Profile'
+import ProfileContainer from './components/Profile/ProfileContainer'
+
 import Sidebar from './components/Sidebar/Sidebar'
 import Player from './components/Player/Player'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
@@ -14,9 +16,9 @@ function App() {
       <Header />
       <main className="main">
         <Routes>
-          <Route path="/profile/*" element={<Profile />} />
-          <Route path="/dialogs/*" element={<DialogsContainer />} />
-          <Route path="/users/*" element={<UsersContainer />} />
+          <Route path="*" element={<ProfileContainer />} />
+          <Route path="/dialogs" element={<DialogsContainer />} />
+          <Route path="/users" element={<UsersContainer />} />
         </Routes>
       </main>
       <Sidebar />
