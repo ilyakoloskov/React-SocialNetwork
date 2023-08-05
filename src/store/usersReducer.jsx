@@ -3,12 +3,11 @@ const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_USERS_TOTAL_COUNT = 'SET_USERS_TOTAL_COUNT'
-const IS_FETCHING = 'IS_FETCHING'
-
+const TOOGLE_IS_FETCHING = 'TOOGLE_IS_FETCHING'
 
 let initialState = {
   usersData: [],
-  pageSize: 5 ,
+  pageSize: 20,
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
@@ -40,22 +39,25 @@ const usersReducer = (state = initialState, action) => {
       console.log('SET_USERS IN REDUCER', action.usersData)
       return {
         ...state,
-         usersData: action.usersData,
+        usersData: action.usersData,
       }
     }
     case SET_CURRENT_PAGE: {
       return {
-        ...state, currentPage: action.currentPage
+        ...state,
+        currentPage: action.currentPage,
       }
     }
     case SET_USERS_TOTAL_COUNT: {
       return {
-        ...state, totalUsersCount: action.totalUsersCount
+        ...state,
+        totalUsersCount: action.totalUsersCount,
       }
     }
-    case IS_FETCHING: {
-      return{
-        ...state, isFetching: action.isFetching
+    case TOOGLE_IS_FETCHING: {
+      return {
+        ...state,
+        isFetching: action.isFetching,
       }
     }
     default: {
@@ -64,36 +66,36 @@ const usersReducer = (state = initialState, action) => {
   }
 }
 
-export const followActionCreator = (userId) => {
+export const follow = (userId) => {
   return { type: FOLLOW, userId }
 }
 
-export const unFollowActionCreator = (userId) => {
+export const unFollow = (userId) => {
   return { type: UNFOLLOW, userId }
 }
 
-export const setCurrentPageActionCreator = (currentPage)=> {
-  return {type: SET_CURRENT_PAGE, currentPage}
+export const setCurrentPage = (currentPage) => {
+  return { type: SET_CURRENT_PAGE, currentPage }
 }
 
-export const setUsersActionCreator = (usersData) => {
+export const setUsers = (usersData) => {
   return {
     type: SET_USERS,
     usersData,
   }
 }
 
-export const setUsersTotalCountActionCreator = (totalUsersCount) => {
+export const setUsersTotalCount = (totalUsersCount) => {
   return {
     type: SET_USERS_TOTAL_COUNT,
     totalUsersCount,
   }
 }
 
-export const setIsFetchingActionCreator = (isFetching) => {
+export const toggleIsFetching = (isFetching) => {
   return {
-    type: IS_FETCHING,
-    isFetching
+    type: TOOGLE_IS_FETCHING,
+    isFetching,
   }
 }
 
