@@ -143,14 +143,23 @@ body
       padding: 5px 15px
       gap: 20px
 
+.section-users
+  &__wrapper  
+    display: grid
+    grid-template-columns: repeat(5, 1fr)
+    gap: 20px
+
+
 .pagination
   display: flex
+  flex-wrap: wrap
   gap: 15px
   &__item
+    display: flex
+    place-content: center
     baackground: none
     border-radius: 5px
-    width: 30px
-    height: 30px
+    padding: 10px
     border: 1px solid var(--color-main)
     background: var(--color-secondary)
     font-size: 18px

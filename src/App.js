@@ -16,7 +16,7 @@ function App() {
       <Header />
       <main className="main">
         <Routes>
-          <Route path="*" element={<ProfileContainer />} />
+          <Route path="/profile/:userId?" element={<ProfileContainer />}></Route>
           <Route path="/dialogs" element={<DialogsContainer />} />
           <Route path="/users" element={<UsersContainer />} />
         </Routes>

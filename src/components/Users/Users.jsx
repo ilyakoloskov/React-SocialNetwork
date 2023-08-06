@@ -9,9 +9,25 @@ function Users(props) {
   }
   return (
     <>
+      <div className="section-users__wrapper">
+        {props.usersData.map((user) => (
+          <User
+            avatarUrl={user.photos.small}
+            id={user.id}
+            isFollowed={user.isFollowed}
+            name={user.name}
+            location={user.location}
+            status={user.status}
+            key={user.id}
+            follow={props.follow}
+            unFollow={props.unFollow}
+          />
+        ))}
+      </div>
+      {/* <button className="btn">Show more</button> */}
       <div className="pagination">
         {pages.map((page) => (
-          <button
+          <div
             onClick={() => {
               props.onPageChanged(page)
             }}
@@ -21,23 +37,9 @@ function Users(props) {
             }
           >
             {page}
-          </button>
+          </div>
         ))}
       </div>
-      <button className="btn">Show more</button>
-      {props.usersData.map((user) => (
-        <User
-          avatarUrl={user.photos.small}
-          id={user.id}
-          isFollowed={user.isFollowed}
-          name={user.name}
-          location={user.location}
-          status={user.status}
-          key={user.id}
-          follow={props.follow}
-          unFollow={props.unFollow}
-        />
-      ))}
     </>
   )
 }
