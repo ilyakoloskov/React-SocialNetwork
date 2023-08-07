@@ -2,7 +2,6 @@ import styles from '../Profile.module.sass'
 import Preloader from '../../UI/Preloader/Preloader'
 
 function ProfileInfo(props) {
-  console.log(props)
   if (!props.profile) {
     return <Preloader />
   } else {

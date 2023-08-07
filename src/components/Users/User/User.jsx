@@ -3,7 +3,6 @@ import userPhoto from '../../../assets/images/user.jpg'
 import { NavLink } from 'react-router-dom'
 
 function User(props) {
-  console.log(props, 'propsdqw dq w')
   let onFollow = (userId) => {
     props.follow(userId)
   }

@@ -4,6 +4,7 @@ import playerReducer from './playerReducer'
 import dialogsReducer from './dialogsReducer'
 import sidebarReducer from './sidebarReducer'
 import usersReducer from './usersReducer'
+import authReducer from './authReducer'
 
 // За каждую ветку объекта, отвечает свой reducer
 let reducers = combineReducers({
@@ -12,6 +13,7 @@ let reducers = combineReducers({
   usersPage: usersReducer,
   sidebar: sidebarReducer,
   playerBar: playerReducer,
+  auth: authReducer,
 })
 
 let store = createStore(reducers)

@@ -36,7 +36,6 @@ const usersReducer = (state = initialState, action) => {
         }),
       }
     case SET_USERS: {
-      console.log('SET_USERS IN REDUCER', action.usersData)
       return {
         ...state,
         usersData: action.usersData,
