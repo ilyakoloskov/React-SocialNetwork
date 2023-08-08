@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom'
 import styles from './Header.module.sass'
 
 function Header(props) {
-  debugger
   return (
     <header className={styles.header}>
       <div className={`${styles.header__about} box`}>
@@ -41,11 +40,14 @@ function Header(props) {
         </div>
       </div>
       <div className={`${styles.header__auth} box`}>
-          
-        {
-          props.isAuth ? `${props.login}` : <NavLink className='btn' to={'/login'}>Login</NavLink>
-        }
-          {/* <img src={`${props.photos}`} alt="" /> */}
+        {props.isAuth ? (
+          `${props.login}`
+        ) : (
+          <NavLink className="btn" to={'/login'}>
+            Login
+          </NavLink>
+        )}
+        {/* <img src={`${props.photos}`} alt="" /> */}
       </div>
     </header>
   )

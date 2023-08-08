@@ -7,6 +7,7 @@ function Users(props) {
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i)
   }
+  console.log(props)
   return (
     <>
       <div className="section-users__wrapper">
@@ -14,7 +15,7 @@ function Users(props) {
           <User
             avatarUrl={user.photos.small}
             id={user.id}
-            isFollowed={user.isFollowed}
+            followed={user.followed}
             name={user.name}
             location={user.location}
             status={user.status}
